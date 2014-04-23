@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="javaToolKit" basedir=".">
+
+	<property name="ver" value="0.1" description="the first version of java tool kit" />
+	<property name="jar.name" value="jtk_util_${ver}.jar" />
+	<tstamp>
+		<format property="tstamp" timezone="GMT+8" pattern="yyyy-MM-dd HH:mm:ss Z" />
+	</tstamp>
+
+	<!-- 将工具类打成jar包 -->
+	<target name="create_jtk_util_jar" description="create ${jar.name}">
+		<mkdir dir="dist" />
+		<jar destfile="dist/${jar.name}">
+			<manifest>
+				<attribute name="Built-By" value="${user.name} @ ${tstamp}" />
+			</manifest>
+			<fileset dir="bin">
+				<include name="**/**" />
+				<exclude name="**/**Test**" />
+			</fileset>
+		</jar>
+	</target>
+</project>
